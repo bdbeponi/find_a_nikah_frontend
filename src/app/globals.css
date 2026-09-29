@@ -1,0 +1,142 @@
+/* src/app/globals.css */
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Find A Nikah palette - deep emerald + gold.
+   Change these six and the whole site follows; nothing hardcodes a hex.
+   ------------------------------------------------------------------ */
+:root {
+  /* Emerald */
+  --primary: #0f6b4f;
+  --primary-dark: #07402f;
+  --primary-light: #1f9b74;
+
+  /* Gold */
+  --gold: #c99a2e;
+  --gold-dark: #9a7420;
+  --gold-light: #e9c96a;
+
+  /* Neutrals */
+  --ink: #141414;
+  --ink-soft: #1e1e1e;
+  --cream: #f8f6f1;
+  --white: #ffffff;
+  --dark_gray: #737373;
+  --gray_200: #e5e5e5;
+
+  /* Status */
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #d97706;
+
+  --background: var(--white);
+  --foreground: var(--ink);
+}
+
+@theme {
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+
+  --color-gold: var(--gold);
+  --color-gold-dark: var(--gold-dark);
+  --color-gold-light: var(--gold-light);
+
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-cream: var(--cream);
+  --color-white: var(--white);
+  --color-dark_gray: var(--dark_gray);
+  --color-gray_200: var(--gray_200);
+
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+
+  /* --font-outfit-sans is injected by next/font in src/app/layout.js */
+  --font-outfit: var(--font-outfit-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ---------------------------- Layout ---------------------------- */
+.container-x {
+  @apply mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8;
+}
+
+/* ---------------------------- Buttons ---------------------------
+   `btn` carries the shape; pair it with a colour class:
+   <button class="btn btn-gold">                                    */
+.btn {
+  @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 ease-out disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.btn-primary {
+  @apply bg-primary text-white hover:bg-primary-dark;
+}
+
+/* Gold is the call-to-action colour */
+.btn-gold {
+  @apply text-primary-dark;
+  background-image: linear-gradient(135deg, var(--gold-light), var(--gold));
+}
+.btn-gold:hover {
+  background-image: linear-gradient(135deg, var(--gold), var(--gold-dark));
+}
+
+.btn-outline {
+  @apply border border-primary bg-transparent text-primary hover:bg-primary hover:text-white;
+}
+
+.btn-ghost {
+  @apply bg-transparent text-ink hover:bg-gray_200;
+}
+
+/* ---------------------------- Forms ----------------------------- */
+.input_field {
+  @apply w-full rounded-lg border border-gray_200 bg-white px-3.5 py-2.5 text-sm text-ink outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15;
+}
+
+.label_field {
+  @apply mb-1.5 block text-sm font-medium text-ink;
+}
+
+/* ---------------------------- Surfaces -------------------------- */
+.card {
+  @apply rounded-2xl border border-gray_200 bg-white;
+}
+
+.text-gold-gradient {
+  background-image: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Section eyebrow + title pair */
+.section-eyebrow {
+  @apply text-xs font-semibold tracking-[0.2em] text-gold uppercase;
+}
+
+.section-title {
+  @apply text-2xl font-bold text-primary-dark sm:text-3xl lg:text-4xl;
+}
+
+/* ---------------------------- Utilities ------------------------- */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Someone who asked their OS for less motion gets the content, not the show */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}
