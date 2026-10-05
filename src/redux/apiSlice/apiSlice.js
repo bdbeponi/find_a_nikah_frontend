@@ -8,7 +8,7 @@ export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: API_BASE_URL,
-    // Auth rides on the HTTP-only cookies the backend sets; the Bearer header is
+    // Auth rides on the HTTP-only cookies the backend sets the Bearer header is
     // a fallback for when those cookies are blocked (private mode, some mobile
     // browsers on a cross-port dev setup).
     credentials: "include",
