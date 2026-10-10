@@ -31,7 +31,8 @@ export const admin = {
 };
 
 export const imageVerification = {
-  imageVerification: "/face-verification"
+  faceSession: "profile/face-verification/start",
+  imageVerification: "profile/face-verification",
 }
 
 export const endpoints = { auth, admin, imageVerification };

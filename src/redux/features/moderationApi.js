@@ -103,6 +103,33 @@ export const moderationApi = apiSlice.injectEndpoints({
       }),
       providesTags: ["Audit"],
     }),
+
+    //test only for image verification
+    verifyFace: builder.mutation({
+      query: (file) => {
+        const body = new FormData();
+        body.append("photo", file); // must match upload.single("photo")
+        return { url: endpoints.imageVerification.imageVerification, method: "POST", body };
+      },
+      invalidatesTags: ["Verification", "Member"],
+    }),
+
+
+    startFaceSession: builder.mutation({
+      query: () => ({ url: endpoints.imageVerification.faceSession, method: "POST" }),
+    }),
+
+    verifyFace: builder.mutation({
+      query: ({ sessionId, frames }) => {
+        const body = new FormData();
+        body.append("sessionId", sessionId);
+        frames.forEach((blob, i) => body.append(`step${i + 1}`, blob, `step${i + 1}.jpg`));
+        return { url: endpoints.imageVerification.imageVerification, method: "POST", body };
+      },
+      invalidatesTags: ["Verification", "Member"],
+    }),
+
+
   }),
 });
 
@@ -116,4 +143,6 @@ export const {
   useGetVerificationsQuery,
   useReviewVerificationMutation,
   useGetAuditLogQuery,
+  useVerifyFaceMutation,
+  useStartFaceSessionMutation,
 } = moderationApi;
