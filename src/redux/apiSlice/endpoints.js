@@ -30,4 +30,8 @@ export const admin = {
   staff: "admin/staff",
 };
 
-export const endpoints = { auth, admin };
+export const imageVerification = {
+  imageVerification: "/face-verification"
+}
+
+export const endpoints = { auth, admin, imageVerification };

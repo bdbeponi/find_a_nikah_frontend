@@ -41,6 +41,12 @@ const links = [
     Icon: Verified,
     queue: "pendingVerifications",
   },
+  {
+    label: "Image Verifications",
+    href: "/admin/imageVerification",
+    Icon: Verified,
+    queue: "pendingImageVerifications",
+  },
   { label: "Photos", href: "/admin/photos", Icon: Photo, queue: "pendingPhotos" },
   { label: "Members", href: "/admin/members", Icon: Group },
   { label: "Subscriptions", href: "/admin/subscriptions", Icon: Money },
@@ -96,11 +102,10 @@ export default function AdminSidebar() {
             href={href}
             onClick={() => setOpen(false)}
             aria-current={active ? "page" : undefined}
-            className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
-              active
-                ? "bg-primary text-white"
-                : "text-ink hover:bg-cream"
-            }`}
+            className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${active
+              ? "bg-primary text-white"
+              : "text-ink hover:bg-cream"
+              }`}
           >
             <Icon size={20} />
             {label}
@@ -108,9 +113,8 @@ export default function AdminSidebar() {
               // Announced as part of the link, so a screen reader says
               // "Reports, 3 waiting" rather than reading a bare number.
               <span
-                className={`ml-auto rounded-full px-2 py-0.5 text-xs font-semibold ${
-                  active ? "bg-white/20 text-white" : "bg-gold/20 text-gold-dark"
-                }`}
+                className={`ml-auto rounded-full px-2 py-0.5 text-xs font-semibold ${active ? "bg-white/20 text-white" : "bg-gold/20 text-gold-dark"
+                  }`}
               >
                 {waiting}
                 <span className="sr-only"> waiting</span>
